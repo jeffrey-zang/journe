@@ -6,18 +6,17 @@ Chat chat = new Chat(
   color(255, 255, 255)
 );
 
-public void setup() {
+public void settings() {
   size(chat.width, chat.height);
 }
 
 
 void setup() {
-
+  createGUI();
   
 }
 
 
 void draw() {
-  background(chat.f
-  ill);
+  background(chat.fill);
 }
