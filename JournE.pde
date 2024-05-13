@@ -1,5 +1,8 @@
 import g4p_controls.*;
 
+String[] log; 
+String msgs; 
+
 Chat chat = new Chat(
   300,
   800,
@@ -13,6 +16,9 @@ public void settings() {
 
 void setup() {
   createGUI();
+  log = loadStrings("data/messages.txt");
+  msgs = join(log,"\n");
+  label1.setText(msgs);
   
 }
 
