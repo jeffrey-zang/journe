@@ -15,7 +15,7 @@
  */
 
 public void Typing(GTextField source, GEvent event) { //_CODE_:TextBox:338386:
-  texetarea1_change1.AppendText("TextBox - GTextField >> GEvent." + event + " @ " + millis());
+  textarea1.appendText("TextBox - GTextField >> GEvent." + event + " @ " + millis());
   if(event == GEvent.ENTERED) {
    print("yippee"); 
   }
