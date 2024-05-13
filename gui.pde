@@ -14,10 +14,12 @@
  * =========================================================
  */
 
-public void Typing(GTextField source, GEvent event) { //_CODE_:TextBox:338386:
-  textarea1.appendText("TextBox - GTextField >> GEvent." + event + " @ " + millis());
-  if(event == GEvent.ENTERED) {
-   print("yippee"); 
+public void TextBoxChange(GTextField source, GEvent event) { //_CODE_:TextBox:338386:
+
+  if(event == GEvent.ENTERED) {   
+    label1.setTextAlign(GAlign.RIGHT,null);
+    label1.setText(TextBox.getText());
+    TextBox.setText("");
   }
 } //_CODE_:TextBox:338386:
 
@@ -33,10 +35,6 @@ public void goStats(GButton source, GEvent event) { //_CODE_:StatsTab:339897:
   println("StatsTab - GButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:StatsTab:339897:
 
-public void textarea1_change1(GTextArea source, GEvent event) { //_CODE_:textarea1:942327:
-  println("textarea1 - GTextArea >> GEvent." + event + " @ " + millis());
-} //_CODE_:textarea1:942327:
-
 
 
 // Create all the GUI controls. 
@@ -49,7 +47,7 @@ public void createGUI(){
   TextBox = new GTextField(this, 0, 630, 300, 30, G4P.SCROLLBARS_NONE);
   TextBox.setPromptText("Press here to send a message...");
   TextBox.setOpaque(true);
-  TextBox.addEventHandler(this, "Typing");
+  TextBox.addEventHandler(this, "TextBoxChange");
   messageTab = new GButton(this, 0, 0, 100, 30);
   messageTab.setText("Messages");
   messageTab.addEventHandler(this, "goMessage");
@@ -59,9 +57,9 @@ public void createGUI(){
   StatsTab = new GButton(this, 100, 0, 100, 30);
   StatsTab.setText("Stats");
   StatsTab.addEventHandler(this, "goStats");
-  textarea1 = new GTextArea(this, 1, 35, 298, 593, G4P.SCROLLBARS_NONE);
-  textarea1.setOpaque(true);
-  textarea1.addEventHandler(this, "textarea1_change1");
+  label1 = new GLabel(this, 0, 30, 300, 600);
+  label1.setTextAlign(GAlign.CENTER, GAlign.TOP);
+  label1.setOpaque(false);
 }
 
 // Variable declarations 
@@ -70,4 +68,4 @@ GTextField TextBox;
 GButton messageTab; 
 GButton SettingsTab; 
 GButton StatsTab; 
-GTextArea textarea1; 
+GLabel label1; 
