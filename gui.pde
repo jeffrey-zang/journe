@@ -17,9 +17,16 @@
 public void TextBoxChange(GTextField source, GEvent event) { //_CODE_:TextBox:338386:
 
   if(event == GEvent.ENTERED) {   
+    msgs += (TextBox.getText() + "\n");
     label1.setTextAlign(GAlign.RIGHT,null);
-    label1.setText(TextBox.getText());
+    label1.setText(msgs);
     TextBox.setText("");
+    log = split(msgs, "\n");  
+    // Writes the strings to a file, each on a separate line
+    saveStrings("data/messages.txt", log);
+
+    
+    
   }
 } //_CODE_:TextBox:338386:
 
@@ -58,7 +65,7 @@ public void createGUI(){
   StatsTab.setText("Stats");
   StatsTab.addEventHandler(this, "goStats");
   label1 = new GLabel(this, 0, 30, 300, 600);
-  label1.setTextAlign(GAlign.CENTER, GAlign.TOP);
+  label1.setTextAlign(GAlign.RIGHT, GAlign.TOP);
   label1.setOpaque(false);
 }
 
