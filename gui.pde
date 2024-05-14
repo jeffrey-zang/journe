@@ -55,7 +55,7 @@ public void createGUI(){
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setMouseOverEnabled(false);
   surface.setTitle("JournE");
-  TextBox = new GTextField(this, 0, 630, 300, 30, G4P.SCROLLBARS_NONE);
+  TextBox = new GTextField(this, 0, 600, 300, 60, G4P.SCROLLBARS_NONE);
   TextBox.setPromptText("Press here to send a message...");
   TextBox.setOpaque(true);
   TextBox.addEventHandler(this, "TextBoxChange");
@@ -68,7 +68,7 @@ public void createGUI(){
   StatsTab = new GButton(this, 100, 0, 100, 30);
   StatsTab.setText("Stats");
   StatsTab.addEventHandler(this, "goStats");
-  messages = new GTextArea(this, 0, 30, 300, 600, G4P.SCROLLBARS_VERTICAL_ONLY | G4P.SCROLLBARS_AUTOHIDE);
+  messages = new GTextArea(this, 0, 30, 300, 570, G4P.SCROLLBARS_VERTICAL_ONLY | G4P.SCROLLBARS_AUTOHIDE);
   messages.setOpaque(true);
   messages.addEventHandler(this, "messageschange");
 }
