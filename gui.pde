@@ -24,9 +24,6 @@ public void TextBoxChange(GTextField source, GEvent event) { //_CODE_:TextBox:33
     log = split(msgs, "\n");  
     // Writes the strings to a file, each on a separate line
     saveStrings("data/messages.txt", log);
-
-    
-    
   }
 } //_CODE_:TextBox:338386:
 
