@@ -16,10 +16,10 @@
 
 public void TextBoxChange(GTextField source, GEvent event) { //_CODE_:TextBox:338386:
 
-  if(event == GEvent.ENTERED) {   
+  if(event == GEvent.ENTERED && !(TextBox.getText().equals("")) ) {   
     msgs += (TextBox.getText() + "\n");
-    label1.setTextAlign(GAlign.RIGHT,null);
-    label1.setText(msgs);
+    messages.setTextAlign(GAlign.RIGHT,null);
+    messages.setText(msgs);
     TextBox.setText("");
     log = split(msgs, "\n");  
     // Writes the strings to a file, each on a separate line
@@ -41,6 +41,10 @@ public void goSettings(GButton source, GEvent event) { //_CODE_:SettingsTab:7764
 public void goStats(GButton source, GEvent event) { //_CODE_:StatsTab:339897:
   println("StatsTab - GButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:StatsTab:339897:
+
+public void messageschange(GTextArea source, GEvent event) { //_CODE_:messages:510315:
+  println("messages - GTextArea >> GEvent." + event + " @ " + millis());
+} //_CODE_:messages:510315:
 
 
 
@@ -64,9 +68,9 @@ public void createGUI(){
   StatsTab = new GButton(this, 100, 0, 100, 30);
   StatsTab.setText("Stats");
   StatsTab.addEventHandler(this, "goStats");
-  label1 = new GLabel(this, 0, 30, 300, 600);
-  label1.setTextAlign(GAlign.RIGHT, GAlign.TOP);
-  label1.setOpaque(false);
+  messages = new GTextArea(this, 0, 30, 300, 600, G4P.SCROLLBARS_VERTICAL_ONLY | G4P.SCROLLBARS_AUTOHIDE);
+  messages.setOpaque(true);
+  messages.addEventHandler(this, "messageschange");
 }
 
 // Variable declarations 
@@ -75,4 +79,4 @@ GTextField TextBox;
 GButton messageTab; 
 GButton SettingsTab; 
 GButton StatsTab; 
-GLabel label1; 
+GTextArea messages; 
