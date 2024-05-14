@@ -5,7 +5,7 @@ String msgs;
 
 Chat chat = new Chat(
   300,
-  800,
+  660,
   color(255, 255, 255)
 );
 
@@ -18,7 +18,7 @@ void setup() {
   createGUI();
   log = loadStrings("data/messages.txt");
   msgs = join(log,"\n");
-  label1.setText(msgs);
+  messages.setText(msgs);
   
 }
 
