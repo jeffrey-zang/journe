@@ -16,6 +16,10 @@ public void settings() {
 
 void setup() {
   createGUI();
+  
+  messages.setTextEditEnabled(false);
+  
+  
   log = loadStrings("data/messages.txt");
   msgs = join(log,"\n");
   messages.setText(msgs);
