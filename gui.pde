@@ -35,14 +35,23 @@ public void TextBoxChange(GTextField source, GEvent event) { //_CODE_:TextBox:33
 } //_CODE_:TextBox:338386:
 
 public void goMessage(GButton source, GEvent event) { //_CODE_:messageTab:576134:
+   TextBox.setVisible(true);
+   messages.setVisible(true);
+
   println("messageTab - GButton >> GEvent." + event + " @ " + millis());
+
 } //_CODE_:messageTab:576134:
 
 public void goSettings(GButton source, GEvent event) { //_CODE_:SettingsTab:776413:
+TextBox.setVisible(false);
+   messages.setVisible(false);
   println("SettingsTab - GButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:SettingsTab:776413:
 
 public void goStats(GButton source, GEvent event) { //_CODE_:StatsTab:339897:
+  TextBox.setVisible(false);
+   messages.setVisible(false);
+
   println("StatsTab - GButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:StatsTab:339897:
 
@@ -57,6 +66,10 @@ public void clearData(GButton source, GEvent event) { //_CODE_:databutton:801346
 public void button1_click1(GButton source, GEvent event) { //_CODE_:button1:891406:
   println("button1 - GButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:button1:891406:
+
+public void PTimeChange(GCustomSlider source, GEvent event) { //_CODE_:PromptTime:882198:
+  println("PromptTime - GCustomSlider >> GEvent." + event + " @ " + millis());
+} //_CODE_:PromptTime:882198:
 
 
 
@@ -90,6 +103,18 @@ public void createGUI(){
   button1 = new GButton(this, 0, 110, 100, 30);
   button1.setText("Set Keywords");
   button1.addEventHandler(this, "button1_click1");
+  PromptTime = new GCustomSlider(this, 0, 190, 300, 50, "grey_blue");
+  PromptTime.setShowValue(true);
+  PromptTime.setShowLimits(true);
+  PromptTime.setLimits(8, 0, 24);
+  PromptTime.setShowTicks(true);
+  PromptTime.setNumberFormat(G4P.INTEGER, 0);
+  PromptTime.setOpaque(false);
+  PromptTime.addEventHandler(this, "PTimeChange");
+  label1 = new GLabel(this, 0, 160, 100, 30);
+  label1.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label1.setText("Prompt Time");
+  label1.setOpaque(false);
 }
 
 // Variable declarations 
@@ -101,3 +126,5 @@ GButton StatsTab;
 GTextArea messages; 
 GButton databutton; 
 GButton button1; 
+GCustomSlider PromptTime; 
+GLabel label1; 
