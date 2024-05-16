@@ -16,7 +16,7 @@
 
 public void TextBoxChange(GTextField source, GEvent event) { //_CODE_:TextBox:338386:
 
-  if(event == GEvent.ENTERED && !(TextBox.getText().equals("")) ) {   
+  if(event == GEvent.ENTERED && !(TextBox.getText().equals(" ")) ) {   
     msgs.add(new Message(
       TextBox.getText()
     ));
