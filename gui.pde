@@ -50,6 +50,14 @@ public void messageschange(GTextArea source, GEvent event) { //_CODE_:messages:5
   println("messages - GTextArea >> GEvent." + event + " @ " + millis());
 } //_CODE_:messages:510315:
 
+public void clearData(GButton source, GEvent event) { //_CODE_:databutton:801346:
+  println("databutton - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:databutton:801346:
+
+public void button1_click1(GButton source, GEvent event) { //_CODE_:button1:891406:
+  println("button1 - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:button1:891406:
+
 
 
 // Create all the GUI controls. 
@@ -72,9 +80,16 @@ public void createGUI(){
   StatsTab = new GButton(this, 100, 0, 100, 30);
   StatsTab.setText("Stats");
   StatsTab.addEventHandler(this, "goStats");
-  messages = new GTextArea(this, 0, 30, 300, 570, G4P.SCROLLBARS_VERTICAL_ONLY | G4P.SCROLLBARS_AUTOHIDE);
+  messages = new GTextArea(this, 0, 30, 300, 570, G4P.SCROLLBARS_VERTICAL_ONLY);
   messages.setOpaque(true);
   messages.addEventHandler(this, "messageschange");
+  databutton = new GButton(this, 0, 50, 100, 30);
+  databutton.setText("Clear Data");
+  databutton.setLocalColorScheme(GCScheme.RED_SCHEME);
+  databutton.addEventHandler(this, "clearData");
+  button1 = new GButton(this, 0, 110, 100, 30);
+  button1.setText("Set Keywords");
+  button1.addEventHandler(this, "button1_click1");
 }
 
 // Variable declarations 
@@ -84,3 +99,5 @@ GButton messageTab;
 GButton SettingsTab; 
 GButton StatsTab; 
 GTextArea messages; 
+GButton databutton; 
+GButton button1; 
