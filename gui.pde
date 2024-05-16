@@ -17,16 +17,20 @@
 public void TextBoxChange(GTextField source, GEvent event) { //_CODE_:TextBox:338386:
 
   if(event == GEvent.ENTERED && !(TextBox.getText().equals("")) ) {   
-    msgs += (TextBox.getText() + "\n");
+    msgs.add(new Message(
+      TextBox.getText()
+    ));
     messages.setTextAlign(GAlign.RIGHT,null);
-    messages.setText(msgs);
+
+    messageString = "";
+    for (int i = 0; i < msgs.size(); i++) {
+      messageString += msgs.get(i).content + "\n";
+    }
+    messages.setText(messageString);
     TextBox.setText("");
-    log = split(msgs, "\n");  
+    log = split(messageString, "\n");
     // Writes the strings to a file, each on a separate line
     saveStrings("data/messages.txt", log);
-
-    
-    
   }
 } //_CODE_:TextBox:338386:
 
