@@ -144,10 +144,14 @@ public void createGUI(){
   promptText.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   promptText.setText("Prompt Time");
   promptText.setOpaque(false);
-  Keywords = GWindow.getWindow(this, "Set Keywords", 0, 0, 240, 120, JAVA2D);
+  Keywords = GWindow.getWindow(this, "Set Keywords", 0, 0, 400, 200, JAVA2D);
   Keywords.noLoop();
   Keywords.setActionOnClose(G4P.KEEP_OPEN);
   Keywords.addDrawHandler(this, "win_draw3");
+  label1 = new GLabel(Keywords, 0, 0, 400, 20);
+  label1.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
+  label1.setText("Close this window by pressing the 'Set Keywords' Button again");
+  label1.setOpaque(false);
   Keywords.loop();
 }
 
@@ -163,3 +167,4 @@ GButton keywordsbutton;
 GCustomSlider PromptTime; 
 GLabel promptText; 
 GWindow Keywords;
+GLabel label1; 
