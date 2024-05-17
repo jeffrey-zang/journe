@@ -1,3 +1,4 @@
+
 import g4p_controls.*;
 
 String[] log; 
@@ -16,6 +17,13 @@ public void settings() {
 
 void setup() {
   createGUI();
+  
+  Keywords.setVisible(false);
+  databutton.setVisible(false);
+  keywordsbutton.setVisible(false);
+  PromptTime.setVisible(false);
+  databutton.setVisible(false);
+  promptText.setVisible(false);
   
   messages.setTextEditEnabled(false);
 
