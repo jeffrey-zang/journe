@@ -24,13 +24,20 @@ public void TextBoxChange(GTextField source, GEvent event) { //_CODE_:TextBox:33
 
     messageString = "";
     for (int i = 0; i < msgs.size(); i++) {
-      messageString += msgs.get(i).content + "\n";
+      Message msg = msgs.get(i);
+      messageString += msg.date.day + "/" + msg.date.month + "/" + msg.date.year + " - " + msg.content + "\n";
     }
+
     messages.setText(messageString);
     TextBox.setText("");
     log = split(messageString, "\n");
     // Writes the strings to a file, each on a separate line
-    saveStrings("data/messages.txt", log);
+    PrintWriter file = createWriter("data/messages.txt");
+    file.print("");
+    file.print(messageString);
+    file.flush();
+    file.close();
+    // saveStrings("data/messages.txt", log);
   }
 } //_CODE_:TextBox:338386:
 

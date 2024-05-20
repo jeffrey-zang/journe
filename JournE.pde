@@ -2,8 +2,9 @@
 import g4p_controls.*;
 
 String[] log; 
-String messageString;
 ArrayList<Message> msgs = new ArrayList<Message>();
+
+String messageString;
 
 Chat chat = new Chat(
   300,
