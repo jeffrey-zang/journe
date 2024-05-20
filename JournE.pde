@@ -5,6 +5,7 @@ String[] log;
 ArrayList<Message> msgs = new ArrayList<Message>();
 
 String messageString;
+String logString;
 
 Chat chat = new Chat(
   300,
@@ -28,12 +29,23 @@ void setup() {
   
   messages.setTextEditEnabled(false);
 
-  messageString = "";
   log = loadStrings("data/messages.txt");
-  for (int i = 0; i < log.length; i++) {
-    Message msg = new Message(log[i]);
-    messageString += log[i] + "\n";
-    msgs.add(msg);
+  messageString = "";
+  for (String line : log) {
+    println(line);
+    if (line.length() == 0) {
+      continue;
+    }
+    String[] parts = split(line, ",");
+    msgs.add(new Message(
+      parts[0],
+      int(parts[1]), 
+      int(parts[2]),
+      int(parts[3]),
+      parts[4]
+    ));
+    Message msg = msgs.get(msgs.size() - 1);
+    messageString += msg.display();
   }
   messages.setText(messageString);
 }
