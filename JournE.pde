@@ -8,6 +8,14 @@ String messageString;
 String logString;
 String[] prompts;
 
+String[] angry;
+String[] sad;
+String[] happy;
+String[] inspired;
+String[] stress;
+String[] tired;
+String[] work;
+
 int questionsAsked = 0;
 
 String[] initialMessages = {
@@ -15,6 +23,8 @@ String[] initialMessages = {
   "Bot," + day() + "," + month() + "," + year() + ",I'm here to help you with your journaling needs.",
   "Bot," + day() + "," + month() + "," + year() + ",How has your day been?",
 };
+
+
 
 Chat chat = new Chat(
   300,
@@ -37,6 +47,14 @@ void setup() {
   promptText.setVisible(false);
   
   messages.setTextEditEnabled(false);
+
+  angry = loadStrings("data/angry.txt");
+  sad = loadStrings("data/sad.txt");
+  happy = loadStrings("data/happy.txt");
+  inspired = loadStrings("data/inspired.txt");
+  stress = loadStrings("data/stress.txt");
+  tired = loadStrings("data/tired.txt");
+  work = loadStrings("data/work.txt");
 
   prompts = loadStrings("data/prompts.txt");
 
