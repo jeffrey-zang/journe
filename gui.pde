@@ -121,15 +121,15 @@ public void SetKeywords(GButton source, GEvent event) { //_CODE_:keywordsbutton:
 } //_CODE_:keywordsbutton:891406:
 
 public void PTimeChange(GCustomSlider source, GEvent event) { //_CODE_:PromptTime:882198:
-if(event == GEvent.RELEASED) {
-    timesettings[0] = str(PromptTime.getValueI());
-    println(timesettings[0]);
-    PrintWriter file = createWriter("data/timesettings.txt");
-    file.print(timesettings[0] + "\n");
-    file.print(timesettings[1]);
-    file.flush();
-    file.close();
-  }
+// if(event == GEvent.RELEASED) {
+//     timesettings[0] = str(PromptTime.getValueI());
+//     println(timesettings[0]);
+//     PrintWriter file = createWriter("data/timesettings.txt");
+//     file.print(timesettings[0] + "\n");
+//     file.print(timesettings[1]);
+//     file.flush();
+//     file.close();
+//   }
 
   println("PromptTime - GCustomSlider >> GEvent." + event + " @ " + millis());
 } //_CODE_:PromptTime:882198:

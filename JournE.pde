@@ -2,7 +2,6 @@
 import g4p_controls.*;
 
 String[] log; 
-String[] timesettings;
 ArrayList<Message> msgs = new ArrayList<Message>();
 
 String messageString;
