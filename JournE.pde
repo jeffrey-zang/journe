@@ -2,6 +2,7 @@
 import g4p_controls.*;
 
 String[] log; 
+String[] timesettings;
 ArrayList<Message> msgs = new ArrayList<Message>();
 
 String messageString;
@@ -29,6 +30,11 @@ void setup() {
   
   messages.setTextEditEnabled(false);
 
+  timesettings = loadStrings("data/timesettings.txt");
+  
+  PromptTime.setValue(int(timesettings[0]));
+  
+
   log = loadStrings("data/messages.txt");
   messageString = "";
   
@@ -36,7 +42,7 @@ void setup() {
     String[] parts = split(log[i], ",");
     String partmessage = "";
       for(int t = 4; t < parts.length; t ++) { 
-        if (t > 4) {
+        if(t > 4) {
          partmessage += ","; 
         }
         partmessage += parts[t];
