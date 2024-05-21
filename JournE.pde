@@ -31,18 +31,22 @@ void setup() {
 
   log = loadStrings("data/messages.txt");
   messageString = "";
-  for (String line : log) {
-    println(line);
-    if (line.length() == 0) {
-      continue;
-    }
-    String[] parts = split(line, ",");
+  
+  for (int i = 0; i < log.length; i ++) {
+    String[] parts = split(log[i], ",");
+    String partmessage = "";
+      for(int t = 4; t < parts.length; t ++) { 
+        if(t > 5) {
+         partmessage += ","; 
+        }
+        partmessage += parts[t];
+      }
     msgs.add(new Message(
       parts[0],
       int(parts[1]), 
       int(parts[2]),
       int(parts[3]),
-      parts[4]
+      partmessage
     ));
     Message msg = msgs.get(msgs.size() - 1);
     messageString += msg.display();
