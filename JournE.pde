@@ -1,8 +1,11 @@
+
 import g4p_controls.*;
 
 String[] log; 
-String messageString;
 ArrayList<Message> msgs = new ArrayList<Message>();
+
+String messageString;
+String logString;
 
 Chat chat = new Chat(
   300,
@@ -17,14 +20,36 @@ public void settings() {
 void setup() {
   createGUI();
   
+  Keywords.setVisible(false);
+  databutton.setVisible(false);
+  keywordsbutton.setVisible(false);
+  PromptTime.setVisible(false);
+  databutton.setVisible(false);
+  promptText.setVisible(false);
+  
   messages.setTextEditEnabled(false);
 
-  messageString = "";
   log = loadStrings("data/messages.txt");
-  for (int i = 0; i < log.length; i++) {
-    Message msg = new Message(log[i]);
-    messageString += log[i] + "\n";
-    msgs.add(msg);
+  messageString = "";
+  
+  for (int i = 0; i < log.length; i ++) {
+    String[] parts = split(log[i], ",");
+    String partmessage = "";
+      for(int t = 4; t < parts.length; t ++) { 
+        if(t > 5) {
+         partmessage += ","; 
+        }
+        partmessage += parts[t];
+      }
+    msgs.add(new Message(
+      parts[0],
+      int(parts[1]), 
+      int(parts[2]),
+      int(parts[3]),
+      partmessage
+    ));
+    Message msg = msgs.get(msgs.size() - 1);
+    messageString += msg.display();
   }
   messages.setText(messageString);
 }
