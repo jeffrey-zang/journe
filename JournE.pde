@@ -27,7 +27,7 @@ String[] initialMessages = {
 
 
 Chat chat = new Chat(
-  300,
+  400,
   660,
   color(255, 255, 255)
 );
@@ -48,13 +48,13 @@ void setup() {
   
   messages.setTextEditEnabled(false);
 
-  angry = loadStrings("data/angry.txt");
-  sad = loadStrings("data/sad.txt");
-  happy = loadStrings("data/happy.txt");
-  inspired = loadStrings("data/inspired.txt");
-  stress = loadStrings("data/stress.txt");
-  tired = loadStrings("data/tired.txt");
-  work = loadStrings("data/work.txt");
+  angry = loadStrings("data/keywords/angry.txt");
+  sad = loadStrings("data/keywords/sad.txt");
+  happy = loadStrings("data/keywords/happy.txt");
+  inspired = loadStrings("data/keywords/inspired.txt");
+  stress = loadStrings("data/keywords/stress.txt");
+  tired = loadStrings("data/keywords/tired.txt");
+  work = loadStrings("data/keywords/work.txt");
 
   prompts = loadStrings("data/prompts.txt");
 
