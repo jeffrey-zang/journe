@@ -16,7 +16,8 @@ void myBtnEvents(GButton button) { //_CODE_:button1:12356:
 
 public void TextBoxChange(GTextField source, GEvent event) { //_CODE_:TextBox:338386:
   
-  if (event == GEvent.ENTERED && !(TextBox.getText().equals(" "))) {   
+  if (event == GEvent.ENTERED && !(TextBox.getText().equals(" "))) {
+    keywordLog.match(TextBox.getText());
     msgs.add(new Message(
       "You",
       year(),
@@ -92,6 +93,7 @@ public void goSettings(GButton source, GEvent event) { //_CODE_:SettingsTab:7764
 public void goStats(GButton source, GEvent event) { //_CODE_:StatsTab:339897:
   TextBox.setVisible(false);
   messages.setVisible(false);
+  
   databutton.setVisible(false);
   keywordsbutton.setVisible(false);
   PromptTime.setVisible(false);

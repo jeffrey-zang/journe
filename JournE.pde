@@ -1,4 +1,3 @@
-
 import g4p_controls.*;
 
 String[] log; 
@@ -8,13 +7,7 @@ String messageString;
 String logString;
 String[] prompts;
 
-String[] angry;
-String[] sad;
-String[] happy;
-String[] inspired;
-String[] stress;
-String[] tired;
-String[] work;
+KeywordLog keywordLog = new KeywordLog();
 
 int questionsAsked = 0;
 
@@ -23,8 +16,6 @@ String[] initialMessages = {
   "Bot," + day() + "," + month() + "," + year() + ",I'm here to help you with your journaling needs.",
   "Bot," + day() + "," + month() + "," + year() + ",How has your day been?",
 };
-
-
 
 Chat chat = new Chat(
   400,
@@ -38,6 +29,8 @@ public void settings() {
 
 void setup() {
   createGUI();
+
+  keywordLog.init();
   
   Keywords.setVisible(false);
   databutton.setVisible(false);
@@ -47,14 +40,6 @@ void setup() {
   promptText.setVisible(false);
   
   messages.setTextEditEnabled(false);
-
-  angry = loadStrings("data/keywords/angry.txt");
-  sad = loadStrings("data/keywords/sad.txt");
-  happy = loadStrings("data/keywords/happy.txt");
-  inspired = loadStrings("data/keywords/inspired.txt");
-  stress = loadStrings("data/keywords/stress.txt");
-  tired = loadStrings("data/keywords/tired.txt");
-  work = loadStrings("data/keywords/work.txt");
 
   prompts = loadStrings("data/prompts.txt");
 

@@ -42,3 +42,5 @@ enraging
 infuriating
 seething
 storming
+mad
+anger
