@@ -36,7 +36,7 @@ void setup() {
     String[] parts = split(log[i], ",");
     String partmessage = "";
       for(int t = 4; t < parts.length; t ++) { 
-        if(t > 5) {
+        if (t > 4) {
          partmessage += ","; 
         }
         partmessage += parts[t];
