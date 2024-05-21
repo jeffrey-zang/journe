@@ -8,9 +8,6 @@ class Message {
     date = new Date(d, m, y);
     sender = s;
   }
-  
-
-  
 
   String display() {
     return this.sender + ": " +  this.content + " - " + this.date.day + "/" + this.date.month + "/" + this.date.year + "\n";

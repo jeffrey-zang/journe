@@ -8,6 +8,11 @@ ArrayList<Message> msgs = new ArrayList<Message>();
 String messageString;
 String logString;
 
+String[] initialMessages = {
+  "Bot," + day() + "," + month() + "," + year() + ",Hello. I'm Journ-E. Your personal journaling assistant.",
+  "Bot," + day() + "," + month() + "," + year() + ",I'm here to help you with your journaling needs.",
+};
+
 Chat chat = new Chat(
   300,
   660,
@@ -37,6 +42,19 @@ void setup() {
 
   log = loadStrings("data/messages.txt");
   messageString = "";
+
+  for (int i = 0; i < initialMessages.length; i ++) {
+    String[] parts = split(initialMessages[i], ",");
+    msgs.add(new Message(
+      parts[0],
+      int(parts[1]),
+      int(parts[2]),
+      int(parts[3]),
+      parts[4]
+    ));
+    Message msg = msgs.get(msgs.size() - 1);
+    messageString += msg.display();
+  }
   
   for (int i = 0; i < log.length; i ++) {
     String[] parts = split(log[i], ",");
