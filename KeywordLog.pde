@@ -45,27 +45,41 @@ class KeywordLog {
   }
   
   void match(String s) {
-    println(s, s.contains("angry"));
-    if (s.contains("angry")) {
-      this.countAngry++;
+    s = s.toLowerCase();
+    for (int i = 0; i < this.angry.length; i++) {
+      if (s.contains(this.angry[i].toLowerCase())) {
+        this.countAngry++;
+      }
     }
-    if (s.contains("sad")) {
-      this.countSad++;
+    for (int i = 0; i < this.sad.length; i++) {
+      if (s.contains(this.sad[i].toLowerCase())) {
+        this.countSad++;
+      }
     }
-    if (s.contains("happy")) {
-      this.countHappy++;
+    for (int i = 0; i < this.happy.length; i++) {
+      if (s.contains(this.happy[i].toLowerCase())) {
+        this.countHappy++;
+      }
     }
-    if (s.contains("inspired")) {
-      this.countInspired++;
+    for (int i = 0; i < this.inspired.length; i++) {
+      if (s.contains(this.inspired[i].toLowerCase())) {
+        this.countInspired++;
+      }
     }
-    if (s.contains("stress")) {
-      this.countStress++;
+    for (int i = 0; i < this.stress.length; i++) {
+      if (s.contains(this.stress[i].toLowerCase())) {
+        this.countStress++;
+      }
     }
-    if (s.contains("tired")) {
-      this.countTired++;
+    for (int i = 0; i < this.tired.length; i++) {
+      if (s.contains(this.tired[i].toLowerCase())) {
+        this.countTired++;
+      }
     }
-    if (s.contains("work")) {
-      this.countWork++;
+    for (int i = 0; i < this.work.length; i++) {
+      if (s.contains(this.work[i].toLowerCase())) {
+        this.countWork++;
+      }
     }
         
     updateLog();

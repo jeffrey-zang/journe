@@ -12,6 +12,8 @@ contentment
 delight
 delighted
 delightful
+good
+great
 bliss
 blissful
 elation
@@ -39,8 +41,18 @@ satisfaction
 sunny
 buoyant
 upbeat
-blissfulness
-gleefulness
 lighthearted
 lightheartedness
 chipper
+thrilled
+on top of the world
+over the moon
+walking on air
+in seventh heaven
+cloud nine
+grateful
+appreciative
+blessed
+fortunate
+lucky
+loved
