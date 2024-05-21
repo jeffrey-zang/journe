@@ -32,7 +32,6 @@ public void TextBoxChange(GTextField source, GEvent event) { //_CODE_:TextBox:33
         day(),
         prompts[int(random(prompts.length))]
       ));
-      questionsAsked++;
      } 
      if (questionsAsked == 6) {
         msgs.add(new Message(
@@ -43,6 +42,7 @@ public void TextBoxChange(GTextField source, GEvent event) { //_CODE_:TextBox:33
           "That\'s all for now! Have a good rest of your day. Come back later for more reflection. Feel free to keep typing things in here throughout your day."
         ));
      }
+    questionsAsked++;
     logString = "";
     messageString = "";
     for (int i = 0; i < msgs.size(); i++) {
