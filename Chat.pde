@@ -1,3 +1,5 @@
+// Chat class, which handles creation of the main chat window
+
 class Chat {
   int width;
   int height;

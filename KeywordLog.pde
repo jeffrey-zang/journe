@@ -1,4 +1,7 @@
+// class that logs new keywords when they are detected
+
 class KeywordLog {
+  // list of all keywords
   String[] angry;
   String[] sad;
   String[] happy;
@@ -7,6 +10,7 @@ class KeywordLog {
   String[] tired;
   String[] work;
   
+  // count of all keywords
   int countAngry;
   int countSad;
   int countHappy;
@@ -15,16 +19,12 @@ class KeywordLog {
   int countTired;
   int countWork;
   
-  String logString;
+  String logString; // temporary string to overwrite logs
   String[] existingLog;
+    
+  KeywordLog() {} // constructor
   
-  int[] emotions = {
-    countAngry, countSad, countHappy, countInspired, countStress, countTired, countWork
-  };
-  
-  KeywordLog() {}
-  
-  void init() {
+  void init() { // initializing function, file imports cannot be put in constructor
     this.angry = loadStrings("data/keywords/angry.txt");
     this.sad = loadStrings("data/keywords/sad.txt");
     this.happy = loadStrings("data/keywords/happy.txt");
@@ -43,7 +43,7 @@ class KeywordLog {
     this.countWork = int(existingLog[6]);
   }
   
-  void match(String s) {
+  void match(String s) { // method to check if a given message matches any keywords; if so, increment the count and update the log file
     s = s.toLowerCase();
     for (int i = 0; i < this.angry.length; i++) {
       if (s.contains(this.angry[i].toLowerCase())) {
@@ -130,7 +130,7 @@ class KeywordLog {
     file.close();
   }
 
-  void reset() {
+  void reset() { // resets count of all keywords
     this.countAngry = 0;
     this.countSad = 0;
     this.countHappy = 0;

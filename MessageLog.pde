@@ -1,17 +1,19 @@
+// MessageLog class which is responsible for logging messages
+
 class MessageLog {
-  ArrayList<Message> msgs = new ArrayList<Message>();
+  ArrayList<Message> msgs = new ArrayList<Message>(); // arraylist of all messages
   String[] log;
 
-  String messageString;
+  String messageString; // temporary variables for message and log strings
   String logString;
 
-  MessageLog() {}
+  MessageLog() {} // constructor
   
-  void init() {
-    log = loadStrings("data/messages.txt");
+  void init() { // initializer function
+    log = loadStrings("data/messages.txt"); // loads existing messages
     messageString = "";
     
-    for (int i = 0; i < log.length; i ++) {
+    for (int i = 0; i < log.length; i ++) { // adds existing messages
       String[] parts = split(log[i], ",");
       String partmessage = "";
       for (int t = 4; t < parts.length; t ++) { 
@@ -31,7 +33,7 @@ class MessageLog {
       messageString += msg.display();
     }
     
-    for (int i = 0; i < initialMessages.length; i ++) {
+    for (int i = 0; i < initialMessages.length; i ++) { // adds initial bot messages
       String[] parts = split(initialMessages[i], ",");
       this.msgs.add(new Message(
         parts[0],
@@ -47,7 +49,7 @@ class MessageLog {
     messages.setText(messageString);
   }
 
-  void addMessage(String sender, int day, int month, int year, String content) {
+  void addMessage(String sender, int day, int month, int year, String content) { // method for adding a new message
     messageString = "";
     logString = "";
     
@@ -56,7 +58,7 @@ class MessageLog {
     println(messageString);
     messages.setText(messageString);
 
-    for (int i = 0; i < this.msgs.size(); i++) {
+    for (int i = 0; i < this.msgs.size(); i++) { // updates log of all messages
       Message msg = this.msgs.get(i);
       logString += msg.sender + "," + msg.date.day + "," + msg.date.month + "," + msg.date.year + "," + msg.content + "\n";
     }
@@ -68,7 +70,7 @@ class MessageLog {
     file.close();
   }
 
-  String displayAll() {
+  String displayAll() { // returns a string to display all messages
     messageString = "";
     for (int i = 0; i < this.msgs.size(); i++) {
       Message msg = this.msgs.get(i);
@@ -77,7 +79,7 @@ class MessageLog {
     return messageString;
   }
 
-  void clear() {
+  void clear() { // clears all message data
     messageString = "";
     logString = "";
 
