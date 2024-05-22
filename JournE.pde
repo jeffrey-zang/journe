@@ -1,4 +1,6 @@
 import g4p_controls.*;
+import java.awt.Font;
+
 
 String[] prompts;
 
@@ -29,15 +31,34 @@ void setup() {
   keywordLog.init();
   messageLog.init();
   
-  Keywords.setVisible(false);
   databutton.setVisible(false);
-  keywordsbutton.setVisible(false);
-  PromptTime.setVisible(false);
   databutton.setVisible(false);
-  promptText.setVisible(false);
   messages.setTextEditEnabled(false);
 
   prompts = loadStrings("data/prompts.txt");
+  
+  
+  angry.setFont(new Font("Dialog", Font.PLAIN, 20));
+  happy.setFont(new Font("Dialog", Font.PLAIN, 20));
+  inspired.setFont(new Font("Dialog", Font.PLAIN, 20));
+  sad.setFont(new Font("Dialog", Font.PLAIN, 20));
+  stress.setFont(new Font("Dialog", Font.PLAIN, 20));
+  tired.setFont(new Font("Dialog", Font.PLAIN, 20));
+  work.setFont(new Font("Dialog", Font.PLAIN, 20));
+  
+  
+  
+  angry.setText("Angry score \n" + str(keywordLog.countAngry));
+  happy.setText("Happy score \n" + str(keywordLog.countHappy));
+  inspired.setText("Inspired score \n" + str(keywordLog.countInspired));
+  sad.setText("Sad score \n" + str(keywordLog.countSad));
+  stress.setText("Stress score \n" + str(keywordLog.countStress));
+  tired.setText("Tired score \n" + str(keywordLog.countTired));
+  work.setText("Work score \n" + str(keywordLog.countWork));
+
+  
+  
+  
 }
 
 void draw() {
