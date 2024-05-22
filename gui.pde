@@ -129,15 +129,15 @@ public void createGUI(){
   TextBox.setOpaque(true);
   TextBox.addEventHandler(this, "TextBoxChange");
   messageTab = new GButton(this, 0, 0, 130, 30);
-  messageTab.setIcon("file.png", 1, GAlign.EAST, GAlign.RIGHT, GAlign.MIDDLE);
+  messageTab.setIcon("./assets/file.png", 1, GAlign.EAST, GAlign.RIGHT, GAlign.MIDDLE);
   messageTab.setText("Messages");
   messageTab.addEventHandler(this, "goMessage");
   SettingsTab = new GButton(this, 270, 0, 130, 30);
-  SettingsTab.setIcon("gear.png", 1, GAlign.EAST, GAlign.RIGHT, GAlign.MIDDLE);
+  SettingsTab.setIcon("./assets/gear.png", 1, GAlign.EAST, GAlign.RIGHT, GAlign.MIDDLE);
   SettingsTab.setText("Settings");
   SettingsTab.addEventHandler(this, "goSettings");
   StatsTab = new GButton(this, 135, 0, 130, 30);
-  StatsTab.setIcon("chart.png", 1, GAlign.EAST, GAlign.RIGHT, GAlign.MIDDLE);
+  StatsTab.setIcon("./assets/chart.png", 1, GAlign.EAST, GAlign.RIGHT, GAlign.MIDDLE);
   StatsTab.setText("Stats");
   StatsTab.addEventHandler(this, "goStats");
   messages = new GTextArea(this, 0, 30, 400, 570, G4P.SCROLLBARS_VERTICAL_ONLY);
