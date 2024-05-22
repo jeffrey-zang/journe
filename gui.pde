@@ -18,49 +18,35 @@ public void TextBoxChange(GTextField source, GEvent event) { //_CODE_:TextBox:33
   
   if (event == GEvent.ENTERED && !(TextBox.getText().equals(" "))) {
     keywordLog.match(TextBox.getText());
-    msgs.add(new Message(
+    messageLog.addMessage(
       "You",
       year(),
       month(),
       day(),
       TextBox.getText()
-     ));
-     if (questionsAsked <= 5) {
-      msgs.add(new Message(
+    );
+    if (questionsAsked <= 5) {
+      messageLog.addMessage(
         "Bot",
         year(),
         month(),
         day(),
         prompts[int(random(prompts.length))]
-      ));
-     } 
-     if (questionsAsked == 6) {
-        msgs.add(new Message(
-          "Bot",
-          year(),
-          month(),
-          day(),
-          "That\'s all for now! Have a good rest of your day. Come back later for more reflection. Feel free to keep typing things in here throughout your day."
-        ));
-     }
-    questionsAsked++;
-    logString = "";
-    messageString = "";
-    for (int i = 0; i < msgs.size(); i++) {
-      Message msg = msgs.get(i);
-      logString += msg.sender + "," + msg.date.year + "," + msg.date.month + "," + msg.date.day + "," + msg.content + "\n";
-      messageString += msg.display();
+      );
+      questionsAsked++;
+    } 
+    if (questionsAsked == 6) {
+      messageLog.addMessage(
+        "Bot",
+        year(),
+        month(),
+        day(),
+        "That\'s all for now! Have a good rest of your day. Come back later for more reflection. Feel free to keep typing things in here throughout your day."
+      );
     }
     
-    messages.setText(messageString);
-    TextBox.setText("");
-    // Writes the strings to a file, each on a separate line
-    PrintWriter file = createWriter("data/messages.txt");
-    file.print("");
-    file.print(logString);
-    file.flush();
-    file.close();
-    // saveStrings("data/messages.txt", log);
+    messages.setText(messageLog.displayAll()); // Updates the message log
+    TextBox.setText(""); // Clears text input box
   }
 } //_CODE_:TextBox:338386:
 
@@ -108,6 +94,9 @@ public void messageschange(GTextArea source, GEvent event) { //_CODE_:messages:5
 } //_CODE_:messages:510315:
 
 public void clearData(GButton source, GEvent event) { //_CODE_:databutton:801346:
+  messageLog.clear();
+  keywordLog.reset();
+
   println("databutton - GButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:databutton:801346:
 
@@ -123,16 +112,16 @@ public void SetKeywords(GButton source, GEvent event) { //_CODE_:keywordsbutton:
 } //_CODE_:keywordsbutton:891406:
 
 public void PTimeChange(GCustomSlider source, GEvent event) { //_CODE_:PromptTime:882198:
-// if(event == GEvent.RELEASED) {
-//     timesettings[0] = str(PromptTime.getValueI());
-//     println(timesettings[0]);
-//     PrintWriter file = createWriter("data/timesettings.txt");
-//     file.print(timesettings[0] + "\n");
-//     file.print(timesettings[1]);
-//     file.flush();
-//     file.close();
-//   }
-
+  //if(event == GEvent.RELEASED) {
+  //timesettings[0] = str(PromptTime.getValueI());
+  //println(timesettings[0]);
+  //PrintWriter file = createWriter("data/timesettings.txt");
+  //file.print(timesettings[0] + "\n");
+  //file.print(timesettings[1]);
+  //file.flush();
+  //file.close();
+  //}
+  
   println("PromptTime - GCustomSlider >> GEvent." + event + " @ " + millis());
 } //_CODE_:PromptTime:882198:
 
@@ -184,7 +173,7 @@ public void createGUI() {
   PromptTime.addEventHandler(this, "PTimeChange");
   promptText = new GLabel(this, 0, 160, 100, 30);
   promptText.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-  promptText.setText("Prompt Time");
+  promptText.setText("Time between daily prompt (hours)");
   promptText.setOpaque(false);
   Keywords = GWindow.getWindow(this, "Set Keywords", 0, 0, 400, 200, JAVA2D);
   Keywords.noLoop();

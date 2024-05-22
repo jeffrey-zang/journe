@@ -22,8 +22,7 @@ class KeywordLog {
     countAngry, countSad, countHappy, countInspired, countStress, countTired, countWork
   };
   
-  KeywordLog() {
-  }
+  KeywordLog() {}
   
   void init() {
     this.angry = loadStrings("data/keywords/angry.txt");
@@ -129,5 +128,17 @@ class KeywordLog {
     file.print(logString);
     file.flush();
     file.close();
+  }
+
+  void reset() {
+    this.countAngry = 0;
+    this.countSad = 0;
+    this.countHappy = 0;
+    this.countInspired = 0;
+    this.countStress = 0;
+    this.countTired = 0;
+    this.countWork = 0;
+    
+    updateLog();
   }
 }

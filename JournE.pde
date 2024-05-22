@@ -1,13 +1,9 @@
 import g4p_controls.*;
 
-String[] log; 
-ArrayList<Message> msgs = new ArrayList<Message>();
-
-String messageString;
-String logString;
 String[] prompts;
 
 KeywordLog keywordLog = new KeywordLog();
+MessageLog messageLog = new MessageLog();
 
 int questionsAsked = 0;
 
@@ -31,6 +27,7 @@ void setup() {
   createGUI();
 
   keywordLog.init();
+  messageLog.init();
   
   Keywords.setVisible(false);
   databutton.setVisible(false);
@@ -38,48 +35,9 @@ void setup() {
   PromptTime.setVisible(false);
   databutton.setVisible(false);
   promptText.setVisible(false);
-  
   messages.setTextEditEnabled(false);
 
   prompts = loadStrings("data/prompts.txt");
-
-  log = loadStrings("data/messages.txt");
-  messageString = "";
-  
-  for (int i = 0; i < log.length; i ++) {
-    String[] parts = split(log[i], ",");
-    String partmessage = "";
-      for(int t = 4; t < parts.length; t ++) { 
-        if(t > 4) {
-         partmessage += ","; 
-        }
-        partmessage += parts[t];
-      }
-    msgs.add(new Message(
-      parts[0],
-      int(parts[1]),
-      int(parts[2]),
-      int(parts[3]),
-      partmessage
-    ));
-    Message msg = msgs.get(msgs.size() - 1);
-    messageString += msg.display();
-  }
-
-  for (int i = 0; i < initialMessages.length; i ++) {
-    String[] parts = split(initialMessages[i], ",");
-    msgs.add(new Message(
-      parts[0],
-      int(parts[1]),
-      int(parts[2]),
-      int(parts[3]),
-      parts[4]
-    ));
-    Message msg = msgs.get(msgs.size() - 1);
-    messageString += msg.display();
-  }
-
-  messages.setText(messageString);
 }
 
 void draw() {
